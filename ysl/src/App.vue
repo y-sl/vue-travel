@@ -4,6 +4,7 @@
     <home-swiper :list="swiperList"></home-swiper>
     <home-icons :list="iconList"></home-icons>
     <home-recommend :list="recommendList"></home-recommend>
+    <home-weekend :list="weekendList"></home-weekend>
   </div>
 </template>
 
@@ -12,6 +13,7 @@
   import HomeSwiper from 'components/HomeSwiper'
   import HomeIcons from 'components/HomeIcons'
   import HomeRecommend from 'components/HomeRecommend'
+  import HomeWeekend from 'components/HomeWeekend.vue'
   import axios from 'axios'
   export default {
     name: 'App',
@@ -19,7 +21,8 @@
       HomeHeader,
       HomeSwiper,
       HomeIcons,
-      HomeRecommend
+      HomeRecommend,
+      HomeWeekend
     },
     data () {
       return {
