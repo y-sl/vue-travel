@@ -3,6 +3,7 @@
     <home-header></home-header>
     <home-swiper :list="swiperList"></home-swiper>
     <home-icons :list="iconList"></home-icons>
+    <home-recommend :list="recommendList"></home-recommend>
   </div>
 </template>
 
@@ -10,13 +11,15 @@
   import HomeHeader from 'components/HomeHeader'
   import HomeSwiper from 'components/HomeSwiper'
   import HomeIcons from 'components/HomeIcons'
+  import HomeRecommend from 'components/HomeRecommend'
   import axios from 'axios'
   export default {
     name: 'App',
     components: {
       HomeHeader,
       HomeSwiper,
-      HomeIcons
+      HomeIcons,
+      HomeRecommend
     },
     data () {
       return {
