@@ -1,8 +1,8 @@
 <template>
   <div class="wrapper">
-    <swiper :options="swiperOption">
-      <swiper-slide v-for="item of swiperList" :key="item.id">
-        <img :src="item.url" width="100%">
+    <swiper :options="swiperOption" v-if="showSwiper">
+      <swiper-slide v-for="item of list" :key="item.id">
+        <img class="swiper-img" :src="item.imgUrl" />
       </swiper-slide>
       <div class="swiper-pagination"  slot="pagination"></div>
     </swiper>
@@ -10,35 +10,37 @@
 </template>
 
 <script>
-  export default {
-    data () {
-      return {
-        swiperOption: {
-          pagination: '.swiper-pagination',
-          loop: true
-        },
-        swiperList: [
-          {
-            id: '001',
-            url: 'https://img1.qunarzz.com/qs/1807/e0/e349cd7cdbd92602.jpg'
-          },
-          {
-            id: '002',
-            url: 'https://img1.qunarzz.com/qs/1807/db/e8ccd94f91ec9702.jpg'
-          }
-        ]
+export default {
+  name: 'HomeSwiper',
+  props: {
+    list: Array
+  },
+  data () {
+    return {
+      swiperOption: {
+        pagination: '.swiper-pagination',
+          autoplay: 2000,
+        loop: true
       }
     }
+  },
+  computed: {
+    showSwiper () {
+      return this.list.length
+    }
   }
+}
 </script>
 
-<style scoped lang="stylus" rel="stylesheet/stylus">
+<style lang="stylus" scoped>
   .wrapper >>> .swiper-pagination-bullet-active
-    background-color #fff
+    background: #fff
   .wrapper
-    overflow hidden
-    width 100%
-    height 0
-    padding-bottom 54%
-    background-color #ccc
+    overflow: hidden
+    width: 100%
+    height: 0
+    padding-bottom: 31.25%
+    background: #eee
+    .swiper-img
+      width: 100%
 </style>
