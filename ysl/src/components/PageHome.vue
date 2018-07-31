@@ -1,14 +1,17 @@
 <template>
-  <div class="home">
-    <home-header></home-header>
-    <home-swiper :list="swiperList"></home-swiper>
-    <home-icons :list="iconList"></home-icons>
-    <home-recommend :list="recommendList"></home-recommend>
-    <home-weekend :list="weekendList"></home-weekend>
+  <div class="home" ref="home">
+    <div class="home-content">
+      <home-header></home-header>
+      <home-swiper :list="swiperList"></home-swiper>
+      <home-icons :list="iconList"></home-icons>
+      <home-recommend :list="recommendList"></home-recommend>
+      <home-weekend :list="weekendList"></home-weekend>
+    </div>
   </div>
 </template>
 
 <script>
+  import BScroll from 'better-scroll'
   import HomeHeader from 'components/HomeHeader'
   import HomeSwiper from 'components/HomeSwiper'
   import HomeIcons from 'components/HomeIcons'
@@ -32,6 +35,14 @@
         weekendList: []
       }
     },
+    mounted() {
+      this.getHomeInfo()
+      this.$nextTick(() => {
+        this.homeScroll = new BScroll(this.$refs.home, {
+          click: true
+        })
+      })
+    },
     methods: {
       getHomeInfo () {
         axios.get('https://easy-mock.com/mock/5b3eba9c04502462c6feb598/ysl/qunaer')
@@ -48,13 +59,11 @@
           this.weekendList = data.weekendList
         }
       }
-    },
-    mounted() {
-      this.getHomeInfo()
-    },
+    }
   }
 </script>
 
-<style>
-
+<style lang="stylus" scoped>
+  .home
+    height 812px
 </style>
